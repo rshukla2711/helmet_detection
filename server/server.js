@@ -5,9 +5,8 @@ const http = require('http');
 const WebSocket = require('ws');
 require('dotenv').config();
 const db_url = process.env.DB_URL;
-
+const port=process.env.PORT;
 const app = express();
-const port = 5000;
 
 // Middleware
 app.use(cors());
@@ -64,7 +63,9 @@ app.get('/api/detections', async (req, res) => {
 
 // Create HTTP server and WebSocket server
 const server = http.createServer(app);
+
 const wss = new WebSocket.Server({ server });
+console.log(wss)
 
 // Broadcast all detections to all connected clients
 async function broadcastDetections() {
