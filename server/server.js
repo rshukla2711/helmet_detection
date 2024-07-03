@@ -5,7 +5,7 @@ const http = require('http');
 const WebSocket = require('ws');
 require('dotenv').config();
 const db_url = process.env.DB_URL;
-const port=5000;
+const port=process.env.PORT || 5000;
 const app = express();
 
 // Middleware
