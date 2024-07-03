@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 function App() {
   const [detections, setDetections] = useState([]);
   const [filteredDetections, setFilteredDetections] = useState([]);
@@ -8,7 +7,8 @@ function App() {
   const [locations, setLocations] = useState([]);
 
   useEffect(() => {
-    const socket = new WebSocket('ws://helmet-detection-1.onrender.com');
+    const websocketUrl = process.env.REACT_APP_WEBSOCKET_URL;
+    const socket = new WebSocket(websocketUrl);
 
     socket.onopen = () => {
       console.log('WebSocket connection established');
